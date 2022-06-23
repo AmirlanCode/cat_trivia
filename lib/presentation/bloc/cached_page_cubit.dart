@@ -4,9 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
 
 class CachedFactsCubit extends Cubit<CachedPageState> {
-  final CatRepository _catRepository;
+  final CatRepository catRepository;
 
-  CachedFactsCubit(this._catRepository) : super(Empty());
+  CachedFactsCubit(this.catRepository) : super(Empty());
 
   Future<void> getFromDatabase() async {
     emit(DatabaseLoading());

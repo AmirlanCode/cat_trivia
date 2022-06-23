@@ -3,17 +3,17 @@ import 'package:cat_trivia/presentation/bloc/cat_fact_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CatFactsCubit extends Cubit<CatFactState> {
-  final CatRepository _catRepository;
+  final CatRepository catRepository;
 
-  CatFactsCubit(this._catRepository) : super(FirstFactState());
+  CatFactsCubit(this.catRepository) : super(FirstFactState());
 
   Future<void> getFacts() async {
     emit(SearchingState());
 
     try {
-      final facts = await _catRepository.getCatSource();
+      final facts = await catRepository.getCatSource();
 
-      if (facts == null) {
+      if (facts.text.isEmpty) {
         emit(ErrorState('Null'));
       }
       emit(CatFactsFind(facts));
