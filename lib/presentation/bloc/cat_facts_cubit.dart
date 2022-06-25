@@ -13,7 +13,7 @@ class CatFactsCubit extends Cubit<CatFactState> {
     try {
       final facts = await catRepository.getCatSource();
 
-      if (facts.text.isEmpty) {
+      if (facts == null) {
         emit(ErrorState('Null'));
       }
       emit(CatFactsFind(facts));

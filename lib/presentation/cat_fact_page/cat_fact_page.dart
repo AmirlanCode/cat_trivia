@@ -24,7 +24,7 @@ class CatFactPage extends StatelessWidget {
           BlocBuilder<CatFactsCubit, CatFactState>(
             builder: (context, state) {
               if (state is FirstFactState) {
-                Column(
+                return Column(
                   children: [
                     const Text(Strings.pressToStart),
                     ElevatedButton(
